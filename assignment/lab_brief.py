@@ -1,14 +1,13 @@
 """
-Code-first lab brief.
-
-Students should read this file before implementing the DAG.
+Student-facing assignment brief.
 """
 
 LAB_NAME = "sales_data_quality_pipeline"
+PROJECT_FOLDER = "starter_project"
 
 OBJECTIVE = """
 Build an Apache Airflow DAG that:
-1. Reads a sales orders CSV file.
+1. Reads a sales orders CSV file from starter_project/data/.
 2. Validates customer_id, amount, and status.
 3. Writes output/validation_summary.json automatically.
 4. Sends a Discord webhook message.
@@ -47,6 +46,7 @@ EXPECTED_PASSED_SUMMARY = {
 
 def print_lab_brief() -> None:
     print(f"Lab: {LAB_NAME}")
+    print(f"Starter project folder: {PROJECT_FOLDER}")
     print(OBJECTIVE)
     print("\nValidation rules:")
     for field_name, rule in VALIDATION_RULES.items():

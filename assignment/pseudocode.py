@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 
+PROJECT_ROOT = "starter_project"
 VALID_STATUSES = {"completed", "pending", "cancelled"}
 
 
@@ -10,7 +11,7 @@ def validate_orders_pseudocode(input_csv_path: str, output_json_path: str, webho
     This file is intentionally close to real code, but still leaves implementation details open.
     """
 
-    rows = read_csv_rows(input_csv_path)  # TODO: implement csv.DictReader loader
+    rows = read_csv_rows(input_csv_path)  # e.g. starter_project/data/orders_passed.csv
 
     missing_customer_ids = 0
     invalid_amounts = 0
@@ -41,8 +42,8 @@ def validate_orders_pseudocode(input_csv_path: str, output_json_path: str, webho
     if missing_customer_ids or invalid_amounts or invalid_statuses:
         summary["validation_status"] = "failed"
 
-    write_summary_json(output_json_path, summary)  # TODO: implement JSON writer
-    send_discord_message(webhook_url, summary)  # TODO: implement webhook POST
+    write_summary_json(output_json_path, summary)  # e.g. starter_project/output/validation_summary.json
+    send_discord_message(webhook_url, summary)
 
     if summary["validation_status"] == "failed":
         raise ValueError("Validation failed. Stop the pipeline.")
